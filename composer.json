@@ -5,6 +5,10 @@
         }
     },
     "require": {
-        "doctrine/orm": "^2.6"
+        "doctrine/orm": "^2.13.1",
+        "doctrine/dbal": "3.4.2",
+        "doctrine/annotations": "1.13.3",
+        "symfony/yaml": "^5.4",
+        "symfony/cache": "^5.4" 
     }
 }
