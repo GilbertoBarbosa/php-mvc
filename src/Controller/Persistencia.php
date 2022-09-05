@@ -4,9 +4,12 @@ namespace Alura\Cursos\Controller;
 
 use Alura\Cursos\Infra\EntityManagerCreator;
 use Alura\Cursos\Entity\Curso;
+use Alura\Cursos\Helper\FlashMessageTrait;
 
 class Persistencia implements InterfaceControladorRequisicao
 {
+    use FlashMessageTrait;
+    
     private $entityManager;
     
     public function __construct()
@@ -38,10 +41,12 @@ class Persistencia implements InterfaceControladorRequisicao
             //$curso->setId($id);
             $curso = $this->entityManager->find(Curso::class, $id);
             $curso->setDescricao($descricao);
+            $this->defineMensagem('success', 'Curso atualizado com sucesso!');
 
         } else {
             // Inserir no banco
             $this->entityManager->persist($curso);
+            $this->defineMensagem('success', 'Curso inserido com sucesso!');
         }
 
         $this->entityManager->flush();
